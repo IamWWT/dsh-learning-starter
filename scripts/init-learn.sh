@@ -7,10 +7,11 @@
 # 自包含：任何 Agent 打开即用。
 # ============================================================================
 set -euo pipefail
-TARGET="${1:-}"; [ -n "$TARGET" ] || { echo "用法: scripts/init-learn.sh <目标目录> [--name 名称] [--subject 学科]" >&2; exit 1; }
-NAME="$(basename "$(realpath -m "$TARGET")")"; SUBJECT=""
+TARGET="${1:-}"; [ -n "$TARGET" ] || { echo "用法: scripts/init-learn.sh <目标目录> [--name 名称] [--subject 学科] [--repo 外部仓库路径]" >&2; exit 1; }
+NAME="$(basename "$(realpath -m "$TARGET")")"; SUBJECT=""; REPO=""
 [ "$#" -ge 3 ] && [ "$2" = "--name" ] && NAME="$3"
 [ "$#" -ge 5 ] && [ "$4" = "--subject" ] && SUBJECT="$5"
+[ "$#" -ge 7 ] && [ "$6" = "--repo" ] && REPO="$7"
 [ -d "$TARGET" ] && [ -n "$(ls -A "$TARGET")" ] && { echo "错误: 目标目录非空" >&2; exit 1; }
 mkdir -p "$TARGET"/{profile,templates,materials,exercises,错题本,specs}
 
@@ -85,6 +86,28 @@ cat > "$TARGET/profile/session-log.md" <<SL
 |---|---|---|---|
 | （暂无） | — | — | — |
 SL
+
+# ---- 外部仓库学习模式（--repo）----
+if [ -n "$REPO" ]; then
+  mkdir -p "$TARGET"/{notes,exercises}
+  {
+    echo "# Repo Study 学习区"
+    echo
+    echo "学习目标仓库: $REPO"
+    echo "铁律: 原仓库只读，本学习区所有产物不进入原仓库。"
+  } > "$TARGET/notes/README.md"
+  cat > "$TARGET/baseline.txt" <<BL
+（首次进入时由学习会话写入原仓库当前 HEAD commit hash）
+BL
+  cat > "$TARGET/updates.md" <<UP
+# 上游更新记录
+
+| 时间 | 新提交 | 变更文件 | 影响笔记 | 建议动作 |
+|---|---|---|---|---|
+| （暂无） | — | — | — | — |
+UP
+  echo "  - 外部仓库学习模式：原仓库只读，进度/笔记存本学习区（repo-study skill）。"
+fi
 
 echo ""
 echo "✅ 学习项目初始化完成: $TARGET"

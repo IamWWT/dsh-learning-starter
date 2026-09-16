@@ -19,6 +19,7 @@ date: 2026-09-14
 - presets/learning/skills/teaching-method/SKILL.md — 通用教学法
 - presets/learning/skills/memory-compensation/SKILL.md — 记忆补偿法
 - presets/learning/skills/multimodal/SKILL.md — 多模态接入
+- presets/learning/skills/repo-study/SKILL.md — 外部 git 仓库学习（只读+sidecar+更新检测）
 
 ## scripts/
 - scripts/install-dsh.sh — 安装 preset+skills

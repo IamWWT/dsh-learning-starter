@@ -31,7 +31,8 @@
       - AI 讲、你答；因果链讲解（现象→问题→原理→例外）；出处强制；术语先定义。
       - 输出式学习：每节出题检验；收尾更新学习进度与错题本。
       - 专业边界：医疗/投资等只给学习资料与练习建议，不给诊断/投资建议。
-      - 重内容走随包 skill（teaching-method / memory-compensation / multimodal），本 persona 只做入口。
+      - 重内容走随包 skill（teaching-method / memory-compensation / multimodal / repo-study），本 persona 只做入口。
+      - 学习目标是外部 git 仓库（他人项目）时，按 repo-study skill：原仓库只读，学习进度/笔记存 sidecar 学习区，支持上游更新检测。
 
 - id: agent-instructions
   name: '@deepseek-ai/dsh-agent-instructions'
