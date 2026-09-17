@@ -5,7 +5,7 @@
 # 装入内容：
 #   1. agent preset：presets/learning/ → $DSH_HOME/.agent-presets/learning/
 #      （agent.cordis.yml + preset.yml；DSH 每次读 roster 时重新发现，无需重启）
-#   2. 随包 skills：presets/learning/skills/（teaching-method/memory-compensation/multimodal）
+#   2. 随包 skills：presets/learning/skills/（teaching-method/memory-compensation/multimodal/repo-study）
 #      随 preset 一起复制、由 preset 的 skill-filesystem 行以 preset 层（scoped）
 #      注册——学习模式内 shadow 全局同名技能，模式外不影响。★ 因此本脚本
 #      不再改动 $HOME/.agents/skills（用户的全局技能根）任何内容（2026-09-14）。
@@ -71,7 +71,7 @@ echo "  安装: $PRESET_DST（agent.cordis.yml + preset.yml + skills/）"
 echo ""
 echo "✅ 安装完成。"
 echo "  - 新会话选择『学习模式』preset 即生效（DSH 每次读 roster 重新发现，无需重启）。"
-echo "  - 随包 skills（teaching-method/memory-compensation/multimodal）以 preset 层注册，学习模式内 shadow 全局；"
+echo "  - 随包 skills（teaching-method/memory-compensation/multimodal/repo-study）以 preset 层注册，学习模式内 shadow 全局；"
 echo "    用户全局技能根 ~/.agents/skills 未被改动，原版 grill-me 等原样保留。"
 echo "  - 已运行的会话不受影响。"
 echo "  - 回滚: 删除新目录并把 .bak-$TS 改回原名即可。"
